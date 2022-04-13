@@ -1,14 +1,28 @@
+import 'package:basearch/src/common/theme_dark.dart';
+import 'package:basearch/src/common/theme_light.dart';
 import 'package:flutter/material.dart';
 
-class ThemeChanger with ChangeNotifier {
-  ThemeData _themeData;
-  ThemeChanger(this._themeData);
+class AppTheme extends ChangeNotifier {
+  late bool useSystem;
 
-  getTheme() => _themeData;
-
-  setTheme(ThemeData theme) {
-    _themeData = theme;
-
+  void setUseSystem(bool shouldUse) {
+    useSystem = shouldUse;
     notifyListeners();
+  }
+
+  ThemeData getLightTheme() {
+    if (useSystem) {
+      return lightTheme;
+    } else {
+      return darkTheme;
+    }
+  }
+
+  ThemeData getDarkTheme() {
+    if (useSystem) {
+      return darkTheme;
+    } else {
+      return lightTheme;
+    }
   }
 }
