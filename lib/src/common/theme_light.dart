@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// The default light theme which uses yellow as main color
-/// and black as secondary color.
-///
-/// TODO(tianhaoz95): use white instead of yellow theme as the
-/// default light theme.
 ThemeData lightTheme = ThemeData(
   primarySwatch: Colors.amber,
   scaffoldBackgroundColor: Colors.amber[50],

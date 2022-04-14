@@ -3,9 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:localization/localization.dart';
-import 'package:provider/provider.dart';
-
-import 'common/theme.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({Key? key}) : super(key: key);
@@ -13,28 +10,24 @@ class AppWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     LocalJsonLocalization.delegate.directories = ['lib/assets/i18n'];
-    return Consumer<AppTheme>(
-      builder: (BuildContext context, AppTheme appTheme, Widget child) {
-        return MaterialApp.router(
-          theme: appTheme.getLightTheme(),
-          darkTheme: appTheme.getDarkTheme(),
-          debugShowCheckedModeBanner: false,
-          scrollBehavior: AppScrollBehavior(),
-          title: 'app_name'.i18n(),
-          localizationsDelegates: [
-            GlobalMaterialLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            LocalJsonLocalization.delegate
-          ],
-          supportedLocales: const [
-            Locale('pt', 'BR'),
-            Locale('en', 'US'),
-          ],
-          routeInformationParser: Modular.routeInformationParser,
-          routerDelegate: Modular.routerDelegate,
-        );
-      },
+
+    return MaterialApp.router(
+      theme: ThemeData(),
+      darkTheme: ThemeData(brightness: Brightness.dark),
+      scrollBehavior: AppScrollBehavior(),
+      title: 'app_name'.i18n(),
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        LocalJsonLocalization.delegate
+      ],
+      supportedLocales: const [
+        Locale('pt', 'BR'),
+        Locale('en', 'US'),
+      ],
+      routeInformationParser: Modular.routeInformationParser,
+      routerDelegate: Modular.routerDelegate,
     );
   }
 }
