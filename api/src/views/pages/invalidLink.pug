@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  body(class="text-center")
+    main(class="form-signin")
+      div(class="card text-white bg-warning mb-3" style="max-width: 20rem;")
+        div(class="card-body")
+          h4(class="alert-heading") Warning!
+          if message == undefined
+            p(class="mb-0") This link is not valid any more! Please, ask for another link!
+          else
+            p(class="mb-0") #{message}
